@@ -1,7 +1,74 @@
 #include "GamesEngineeringBase.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 using namespace GamesEngineeringBase;
+
+
+class Tile {
+private:
+	bool collidable;
+	Image appearance;
+public:
+	Tile() {}
+	void load(string filename, bool passable) {
+		appearance.load(filename);
+		collidable = !passable;
+	}
+	void draw(Window& canvas, int x, int y) {
+		for (unsigned int i = 0; i < appearance.height; i++){
+			if (y + i > 0 && (y + i) < canvas.getHeight()) {
+				for (unsigned int j = 0; j < appearance.width; j++) {
+					if (x + j > 0 && (x + j) < canvas.getWidth()){
+						canvas.draw((x + j), (y + i), appearance.at(j, i));
+					}
+				}
+			}
+		}
+	}
+
+};
+
+const unsigned int tileNum = 10;
+class TileSet {
+public:
+	Tile tiles[tileNum];
+	bool passable[tileNum];
+	unsigned int size = tileNum;
+	TileSet() {}
+	void load() {
+		for (unsigned int i = 0; i < tileNum; i++) {
+			passable[i] = true;
+		}
+		ifstream infile("impassible.txt");
+		unsigned int index = 0;
+		while (getline(infile, s)) {
+			int l = s.length();
+			for (unsigned int i = 0; i < l; i += 2) {
+				int x = (int)s[i];
+				passable[x] = false;
+				index++;
+			}
+		}
+		for (unsigned int i = 0; i < size; i++) {
+			string filename;
+			filename = "Resources/" + s to_string(i) + ".png";
+			tiles[i].load(filename,passable[i]);
+		}
+	}
+};
+
+
+const int maxWidth = 48;
+const int maxHeight = 36;
+Class world() {
+private:
+	TileSet tiles;
+
+public:
+};
+
 
 int countTrues(bool going[4]) {
 	int trues = 0;
@@ -70,10 +137,6 @@ int main() {
 		else {
 			playerMoving[3] = false;
 		}
-
-		for (unsigned int x = 0; x < canvas.getWidth(); x++)
-			for (unsigned int y = 0; y < canvas.getHeight(); y++)
-				canvas.draw(x, y, 0, 0, 255);
 		
 		for (unsigned int i = 0; i < image.height; i++)
 			if (robotY + i < canvas.getHeight() && robotY + i >= 0) {

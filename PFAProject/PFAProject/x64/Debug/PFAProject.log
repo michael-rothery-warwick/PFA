@@ -1,2 +1,12 @@
 ﻿  main.cpp
-  PFAProject.vcxproj -> C:\Users\micha\Documents\GitHub\PFA\PFAProject\x64\Debug\PFAProject.exe
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(46,26): error C2065: 's': undeclared identifier
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(47,12): error C2065: 's': undeclared identifier
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(48,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(49,18): error C2065: 's': undeclared identifier
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,30): error C2065: 's': undeclared identifier
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,32): error C2146: syntax error: missing ';' before identifier 'to_string'
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,45): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,7): error C2146: syntax error: missing ';' before identifier 'world'
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,15): error C2143: syntax error: missing ';' before '{'
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,15): error C2447: '{': missing function header (old-style formal list?)

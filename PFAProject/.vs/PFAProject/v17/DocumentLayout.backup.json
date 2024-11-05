@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\micha\\Documents\\GitHub\\PFA\\PFAProject\\",
+  "WorkspaceRootPath": "C:\\Users\\u5674407\\source\\repos\\PFA\\PFAProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20DF0A5A-7938-4693-A3D6-5010FB06EEEA}|PFAProject.vcxproj|C:\\Users\\micha\\Documents\\GitHub\\PFA\\PFAProject\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{20DF0A5A-7938-4693-A3D6-5010FB06EEEA}|PFAProject.vcxproj|C:\\Users\\u5674407\\source\\repos\\PFA\\PFAProject\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{20DF0A5A-7938-4693-A3D6-5010FB06EEEA}|PFAProject.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,18 +20,14 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\micha\\Documents\\GitHub\\PFA\\PFAProject\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\u5674407\\source\\repos\\PFA\\PFAProject\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\micha\\Documents\\GitHub\\PFA\\PFAProject\\main.cpp",
+              "ToolTip": "C:\\Users\\u5674407\\source\\repos\\PFA\\PFAProject\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAD4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-18T13:45:03.124Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
