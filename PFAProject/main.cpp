@@ -1,6 +1,6 @@
 #include "GamesEngineeringBase.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 using namespace GamesEngineeringBase;
@@ -43,6 +43,7 @@ public:
 		}
 		ifstream infile("impassible.txt");
 		unsigned int index = 0;
+		string s;
 		while (getline(infile, s)) {
 			int l = s.length();
 			for (unsigned int i = 0; i < l; i += 2) {
@@ -53,7 +54,7 @@ public:
 		}
 		for (unsigned int i = 0; i < size; i++) {
 			string filename;
-			filename = "Resources/" + s to_string(i) + ".png";
+			filename = "Resources/" + s + to_string(i) + ".png";
 			tiles[i].load(filename,passable[i]);
 		}
 	}
@@ -62,11 +63,27 @@ public:
 
 const int maxWidth = 48;
 const int maxHeight = 36;
-Class world() {
+
+class World {
 private:
 	TileSet tiles;
-
+	unsigned int a[maxWidth][maxHeight];
 public:
+	World(string filename) {
+		tiles.load();
+		ifstream infile(filename);
+		for (int i = 0; i < maxHeight; i++) {
+			for (int j = 0; j < maxWidth; j++) {
+				infile >> a[j][i];
+			}
+			infile.ignore(1, '\n');
+
+		}
+		infile.close();
+	}
+	void draw(Window& canvas, int wx, int wy) {
+		unsigned 
+	}
 };
 
 
