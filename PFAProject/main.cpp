@@ -155,14 +155,6 @@ public:
 			x = x + bestX;
 			y = y + bestY;
 
-			//for (int i = 0; i < w.enemiesSpawned; i++) {
-			//	if (w.enemies[i]->currentHealth > 0) {
-			//		if (x <= w.enemies[i]->x && x >= w.enemies[i]->x - w.enemies[i]->sprite->width && y <= w.enemies[i]->y && y >= w.enemies[i]->y - w.enemies[i]->sprite->height) {
-			//			active = false;
-			//			w.enemies[i]->currentHealth -= 3;
-			//		}
-			//	}
-			//}
 			if ((xPositive && x >= targetX - speed) || (!xPositive && x <= targetX + speed)) {
 				if ((yPositive && y >= targetY - speed) || (!yPositive && y <= targetY + speed)) {
 					active = false;
@@ -366,12 +358,14 @@ public:
 	Image healthSprite;
 	Image projectileSprite;
 	Image projectileSpriteB;
+	bool infinite;
 	int enemiesSpawned;
+	int score = 0;
 	int powerupsSpawned = 0;
 	Enemy* enemies[1000];
 	Powerup* powerups[250];
 
-	World(string filename) {
+	World(string filename, bool _infinite) {
 		meleerSpriteA.load("Resources/Enemies/0.png");
 		meleerSpriteB.load("Resources/Enemies/1.png");
 		meleerSpriteC.load("Resources/Enemies/2.png");
@@ -381,6 +375,7 @@ public:
 		sentrySprite.load("Resources/Enemies/3.png");
 		bananaSprite.load("Resources/banana.png");
 		appleSprite.load("Resources/apple.png");
+		infinite = _infinite;
 		enemiesSpawned = 0;
 		spawnRate = 300;
 		spawnRateMinimum = 80;
@@ -404,13 +399,33 @@ public:
 		int xTile = wx / tilesize;
 		int yOffset = wy % tilesize;
 		int xOffset = wx % tilesize;
-		for (int x = -20; x < 20; x++) {
-			for (int y = -20; y < 20; y++) {
-				if (x + xTile >= 0 && x + xTile < 48 && y + yTile >= 0 && y + yTile < 36) {
-					tiles[a[x + xTile][y + yTile]].draw(canvas, (xOffset - tilesize * x)+512, (yOffset - tilesize * y)+384);
+		int infX;
+		int infY;
+
+		if (!infinite) {
+			for (int x = -20; x < 20; x++) {
+				for (int y = -20; y < 20; y++) {
+					if (x + xTile >= 0 && x + xTile < 48 && y + yTile >= 0 && y + yTile < 36) {
+						tiles[a[x + xTile][y + yTile]].draw(canvas, (xOffset - tilesize * x) + 512, (yOffset - tilesize * y) + 384);
+					}
 				}
 			}
 		}
+		else {
+			for (int x = -20; x < 20; x++) {
+				for (int y = -20; y < 20; y++) {
+					infX = (x + xTile) % 48;
+					if (infX < 0) infX += 48;
+					infY = (y + yTile) % 36;
+					if (infY < 0) infY += 36;
+					tiles[a[infX][infY]].draw(canvas, (xOffset - tilesize * x) + 512, (yOffset - tilesize * y) + 384);
+				}
+			}
+		}
+
+		
+
+
 		for (unsigned int i = 0; i < enemiesSpawned; i++)
 		{
 			enemies[i]->draw(canvas, wx, wy);
@@ -423,17 +438,39 @@ public:
 	}
 	bool checkWall(int x, int y) {
 		/*cout << "x: " << x << " y: " << y;*/
+		if (infinite) {
+			int infX = (x / 32) % 48;
+			if (infX < 0) infX += 48;
+			int infY = (y / 32) % 36;
+			if (infY < 0) infY += 36;
+			return tiles[a[infX][infY]].collidable;
+		}
 		return tiles[a[(x)/32][(y)/32]].collidable;
 	}
 
 	void spawnEnemy(Window& canvas, int x, int y) {
-		int evilx = rand() % 1024;
-		while (abs(evilx - x) < 275) {
-			evilx = rand() % 1024;
+		int evilx = 0;
+		int evily = 0;
+		if (!infinite) {
+			evilx = rand() % 1480;
+			while (abs(evilx - x) < 500) {
+				evilx = rand() % 1480;
+			}
+			evily = rand() % 1100;
+			while (abs(evily - y) < 380) {
+				evily = rand() % 1100;
+			}
 		}
-		int evily = rand() % 768;
-		while (abs(evily - y) < 210) {
-			evily = rand() % 768;
+
+		if (infinite) {
+			evilx = x + (rand() % 1480) - 740;
+			while (abs(evilx - x) < 500) {
+				evilx = x + (rand() % 1480) - 740;
+			}
+			evily = y + (rand() % 1100) - 740;
+			while (abs(evily - y) < 380) {
+				evily = y + (rand() % 1100) - 740;
+			}
 		}
 		
 		int enemyType = rand() % 4;
@@ -468,6 +505,7 @@ public:
 		{
 			enemies[i]->update(&projectileSpriteB,x,y);
 		}
+		score++;
 	}
 
 };
@@ -571,6 +609,7 @@ public:
 						active = false;
 						w.enemies[i]->currentHealth -= 3;
 						if (w.enemies[i]->currentHealth <= 0) {
+							w.score += 100;
 							int pCheck = rand() % 10;
 							if (pCheck == 0) {
 								w.powerups[w.powerupsSpawned] = new Powerup(w.enemies[i]->x, w.enemies[i]->y, &w.appleSprite, APPLE);
@@ -608,7 +647,7 @@ public:
 	int lastFrameDamaged = 0;
 	int iFrames = 60;
 	int lastSpec = 0;
-	int specCooldown = 600;
+	int specCooldown = 300;
 	int specRange = 100;
 	int specDamage = 9;
 	int specTargets = 2;
@@ -794,21 +833,44 @@ public:
 
 int main() {
 	srand(time(nullptr));
-	cout << checkMagnitude(1, 1, 6, 6);
+	int mode;
+	string level;
+	bool infinite = false;
+	cout << "Type 1 for regular lvl 1, 2 for lvl 2, or 3 for infinite mode" << '\n';
+	cin >> mode;
+	switch (mode) {
+	case 1:
+		level = "level1.txt";
+		break;
+	case 2:
+		level = "level2.txt";
+		break;
+	case 3:
+		level = "levelinf.txt";
+		infinite = true;
+		break;
+	}
+
 	Window canvas;
 	canvas.create(1024, 768, "Roberto the roboto");
 	bool running = true;
-	World w("Resources/level2.txt");
+	World w("Resources/" + level, infinite);
 	Timer tim;
 	float timepassed = 0;
 	Player player;
 	int framecount = 0;
+	int lateUpdates = 0;
+	bool waitHappened = true;
 	while (running)
 	{
 		float dt = tim.dt();
 		dt = dt * 1000;
 		timepassed -= dt;
 		if (timepassed > 3.3333333333f) {
+			if (!waitHappened) {
+				lateUpdates++;
+			}
+			waitHappened = false;
 			framecount++;
 			timepassed = 0.f;
 			canvas.checkInput();
@@ -846,7 +908,18 @@ int main() {
 			player.update(w, canvas);
 			player.draw(w, canvas);
 			canvas.present();
+			if (player.health <= 0) {
+				running = false;
+			}
+		}
+		else {
+			waitHappened = true;
 		}
 
 	}
+	cout << "Your score was: " << w.score << '\n';
+	cout << lateUpdates << " frames were late" << '\n';
+	string end;
+	cout << "Press any key to exit" << '\n';
+	cin >> end;
 }
