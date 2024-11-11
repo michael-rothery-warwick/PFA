@@ -1,12 +1,28 @@
 ﻿  main.cpp
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(46,26): error C2065: 's': undeclared identifier
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(47,12): error C2065: 's': undeclared identifier
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(48,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(49,18): error C2065: 's': undeclared identifier
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,30): error C2065: 's': undeclared identifier
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,32): error C2146: syntax error: missing ';' before identifier 'to_string'
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(56,45): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,7): error C2146: syntax error: missing ';' before identifier 'world'
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,15): error C2143: syntax error: missing ';' before '{'
-C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,15): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(65,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(66,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(111,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(113,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(187,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(189,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(270,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(272,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(328,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(330,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(414,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(419,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(467,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(521,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(523,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(570,40): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(570,122): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(657,27): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(657,51): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(658,29): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(658,53): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(675,26): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(675,51): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(676,28): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(676,53): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\u5674407\source\repos\PFA\PFAProject\main.cpp(796,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PFAProject.vcxproj -> C:\Users\u5674407\source\repos\PFA\PFAProject\x64\Debug\PFAProject.exe
